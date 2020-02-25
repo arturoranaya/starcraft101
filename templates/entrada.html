@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+{% load staticfiles %}
+
+{% block titulo %}
+{{ entrada.titulo }}
+{% endblock titulo %}
+
+
+{% block barra_busqueda %}
+{% endblock barra_busqueda %}
+
+{% block contenido %}
+<h2>{{ entrada.nombre }}</h2>
+<p><strong>Match:</strong> {{ entrada.get_match_display }}</p>
+<p><strong>Liga de Jim:</strong> {{ entrada.get_liga_main_display }} </p>
+<p><strong>Liga Oponente:</strong> {{ entrada.get_liga_oponente_display }}</p>
+<h4>Jim Explicando</h4>
+<!-- <iframe width="560" height="315" src="{{ entrada.video }}" frameborder="0"
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+
+<div class="embed-responsive embed-responsive-16by9">
+    <iframe class="embed-responsive-item" src="{{ entrada.video }}" allowfullscreen></iframe>
+</div>
+<br>
+<h4>Build Order</h4>
+{{ entrada.build_order | safe }}
+
+<h4>Observaciones</h4>
+{{ entrada.observaciones | safe }}
+
+<h4>Replay</h4>
+<a href="{{ entrada.replay }}" target="_blank">Click aqui</a>
+{% endblock contenido %}
