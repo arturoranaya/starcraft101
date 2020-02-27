@@ -1,0 +1,1 @@
+web: gunicorn starcraft_101.wsgi
